@@ -87,6 +87,9 @@
   .image {
     max-width: 30vw; max-height: 30vw;
   }
+  .divider {
+    width: 90vw; 
+  }
   @media (max-width: 800px) {
     .row {
       flex-direction: column !important;
@@ -94,6 +97,19 @@
     .image {
       max-width: 60vw; max-height: 60vw;
     }
+    .divider {
+      width: 80vw; 
+    }
+  }
+  .element-with-scrolling {
+    overflow: auto; /* Ensures content remains scrollable */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+
+  .element-with-scrolling::-webkit-scrollbar {
+    width: 0; /* WebKit browsers (Chrome, Safari, Edge, Opera) */
+    height: 0; /* WebKit browsers (Chrome, Safari, Edge, Opera) */
   }
 
   </style>
@@ -112,7 +128,7 @@
 		</nav>	
 	</header>
 
-  <hr style="width: 80vw; margin: 20px auto 20px auto; display: block;">
+  <hr class="divider" style="margin: 20px auto 20px auto; display: block;">
 
   <div class="content">      
     <div class="row centered" style="margin: 30px auto 30px auto;">
