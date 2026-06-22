@@ -180,24 +180,25 @@
     cursor: pointer;
     flex-shrink: 0;
   }
-  #row1-ryanhub:checked ~ .project-more-ryanhub,
+  #row1-neural-physics:checked ~ .project-more-neural-physics,
   #row1-game:checked ~ .project-more-game,
   #row1-assistant:checked ~ .project-more-assistant,
   #row2-ezcaptain:checked ~ .project-more-ezcaptain,
   #row2-y86:checked ~ .project-more-y86,
   #row2-baby-lm:checked ~ .project-more-baby-lm,
+  #row3-ryanhub:checked ~ .project-more-ryanhub,
   #row3-couch-coop:checked ~ .project-more-couch-coop,
   #row3-ai-agent-test:checked ~ .project-more-ai-agent-test,
-  #row3-baby-image-gen:checked ~ .project-more-baby-image-gen,
+  #row4-baby-image-gen:checked ~ .project-more-baby-image-gen,
   #row4-governors-mansion:checked ~ .project-more-governors-mansion,
   #row4-iheartcomputer:checked ~ .project-more-iheartcomputer,
-  #row4-whoscooking:checked ~ .project-more-whoscooking,
+  #row5-whoscooking:checked ~ .project-more-whoscooking,
   #row5-art-and-worlds:checked ~ .project-more-art-and-worlds,
   #row5-calorie-app:checked ~ .project-more-calorie-app,
-  #row5-cherry-blossom:checked ~ .project-more-cherry-blossom,
+  #row6-cherry-blossom:checked ~ .project-more-cherry-blossom,
   #row6-game-starter:checked ~ .project-more-game-starter,
   #row6-react-native-template:checked ~ .project-more-react-native-template,
-  #row6-api-frame:checked ~ .project-more-api-frame {
+  #row7-api-frame:checked ~ .project-more-api-frame {
     display: block;
   }
   @media (min-width: 50rem) {
@@ -290,17 +291,17 @@
     <div class="project-row">
 	  <div class="project-item">
 	    <div class="project">
-	      <img class="project-image" src="https://ryanhub.org/images/ryanhub.png">
-		  <div class="half"><strong>ryanhub</strong> evidence of my UI mastery <label for="row1-ryanhub" class="link more-link">more</label></div>
+	      <img class="project-image" src="https://ryanhub.org/images/neural-physics.png">
+		  <div class="half"><strong>neural physics engine</strong> cool project and blog post <label for="row1-neural-physics" class="link more-link">more</label></div>
 	    </div>
-	    <input type="radio" name="row1-more" id="row1-ryanhub" class="more-toggle">
-	    <div class="project-more project-more-ryanhub small">
+	    <input type="radio" name="row1-more" id="row1-neural-physics" class="more-toggle">
+	    <div class="project-more project-more-neural-physics small">
 	      <div class="project-more-head">
-	        <div class="half">ryanhub</div>
+	        <div class="half">Neural physics engine</div>
 	        <label for="row1-none" class="link close-link">close</label>
 	      </div>
-	      <p>self hosted remote git storage and manager, personal site, home for web experiments, and more. I built this project as a way to learn PHP but ended up learning much more about sys admin, git, http, and the web in general.</p>
-	      <p>I use ryanhub daily for both git and all the other random dev things I host on it. more info <a class="link" href="https://ryanhub.org/about">here</a></p>
+	      <p>Implementation and writeup for a small neural network to replace a typical voxel physics engine</p>
+	      <p>find the post <a class="link" href="https://ryanhub.org/blogs/neural-physics.html">here</a></p>
 	    </div>
 	  </div>
 	  <div class="project-item">
@@ -387,7 +388,7 @@
 	      <p>tiny language model written in C with no libraries or dependencies.</p>
 	      <p>I built this for the inaugural computer club meeting and I still think it was one of our best. The intent was to show that LLMs operated with simple principles just scaled unreasonably much.</p>
 		    <p>the response to this presentation was so good it set off a mini series I've been calling <i>baby AI</i> where I build and train simple models on funny datasets to demonstrate how it works in the big ones.</p>
-		    <p>find the presentation <a class="link" href="https://iheartcomputer.club/baby-lm">here</a>, links to the code are at the end</p>
+		    <p>find the presentation <a class="link" href="https://iheartcomputer.club/projects/baby-lm">here</a>, links to the code are at the end</p>
 	    </div>
 	  </div>
 	</div>
@@ -438,6 +439,21 @@
     <div class="project-row">
 	  <div class="project-item">
 	    <div class="project">
+	      <img class="project-image" alt="ryanhub" src="https://ryanhub.org/images/ryanhub.png">
+		  <div class="half"><strong>ryanhub</strong> evidence of my UI mastery <label for="row3-ryanhub" class="link more-link">more</label></div>
+	    </div>
+	    <input type="radio" name="row3-more" id="row3-ryanhub" class="more-toggle">
+	    <div class="project-more project-more-ryanhub small">
+	      <div class="project-more-head">
+	        <div class="half">ryanhub</div>
+	        <label for="row3-none" class="link close-link">close</label>
+	      </div>
+	      <p>self hosted remote git storage and manager, personal site, home for web experiments, and more. I built this project as a way to learn PHP but ended up learning much more about sys admin, git, http, and the web in general.</p>
+	      <p>I use ryanhub daily for both git and all the other random dev things I host on it. more info <a class="link" href="https://ryanhub.org/about">here</a></p>
+	    </div>
+	  </div>
+	  <div class="project-item">
+	    <div class="project">
 	      <img class="project-image" alt="couch-coop-engine" src="https://ryanhub.org/images/couch-coop.png">
 		  <div class="half"><strong>couch-coop-engine</strong> unique multiplayer game engine <label for="row3-couch-coop" class="link more-link">more</label></div>
 	    </div>
@@ -468,16 +484,21 @@
 		    <p>multiple experiments live in this repo on <a class="link" href="https://ryanhub.org/repos/ai-agent-test">ryanhub</a></p>
 	    </div>
 	  </div>
+	</div>
+	<input type="radio" name="row3-more" id="row3-none" class="more-toggle" checked>
+	</div>
+    <div class="project-wrap">
+    <div class="project-row">
 	  <div class="project-item">
 	    <div class="project">
 	      <img class="project-image" alt="baby-image-gen" src="https://ryanhub.org/images/baby-image-gen.png">
-		  <div class="half"><strong>baby-image-gen</strong> tiny image generation model written in C <label for="row3-baby-image-gen" class="link more-link">more</label></div>
+		  <div class="half"><strong>baby-image-gen</strong> tiny image generation model written in C <label for="row4-baby-image-gen" class="link more-link">more</label></div>
 	    </div>
-	    <input type="radio" name="row3-more" id="row3-baby-image-gen" class="more-toggle">
+	    <input type="radio" name="row4-more" id="row4-baby-image-gen" class="more-toggle">
 	    <div class="project-more project-more-baby-image-gen small">
 	      <div class="project-more-head">
 	        <div class="half">baby-image-gen</div>
-	        <label for="row3-none" class="link close-link">close</label>
+	        <label for="row4-none" class="link close-link">close</label>
 	      </div>
 	      <p>simple autoencoder implementation for image generation, written from scratch in C, no libraries</p>
 	      <p>part of my <i>baby AI</i> series and one of the only times I have ever had to pull out a pencil and paper to do the math for one of these...</p>
@@ -485,11 +506,6 @@
 		  <p><a class="link" href="https://iheartcomputer.club/projects/baby-image-gen/">read</a> the presentation or find the code on <a class="link" href="https://ryanhub.org/repos/baby-image-gen">ryanhub</a></p>
 	    </div>
 	  </div>
-	</div>
-	<input type="radio" name="row3-more" id="row3-none" class="more-toggle" checked>
-	</div>
-    <div class="project-wrap">
-    <div class="project-row">
 	  <div class="project-item">
 	    <div class="project">
 	      <img class="project-image" alt="governors-mansion" src="https://ryanhub.org/images/governors-mansion.png">
@@ -522,16 +538,21 @@
 		    <p>see the site <a class="link" href="https://iheartcomputer.club">here</a> or the public parts of the source <a class="link" href="https://github.com/RyanA005/iheartcomputer">on github</a></p>
 	    </div>
 	  </div>
+	</div>
+	<input type="radio" name="row4-more" id="row4-none" class="more-toggle" checked>
+	</div>
+    <div class="project-wrap">
+    <div class="project-row">
 	  <div class="project-item">
 	    <div class="project">
 	      <img class="project-image" alt="whoscooking.live" src="https://ryanhub.org/images/whoscooking.png">
-		  <div class="half"><strong>whoscooking.live</strong> public git push leaderboard <label for="row4-whoscooking" class="link more-link">more</label></div>
+		  <div class="half"><strong>whoscooking.live</strong> public git push leaderboard <label for="row5-whoscooking" class="link more-link">more</label></div>
 	    </div>
-	    <input type="radio" name="row4-more" id="row4-whoscooking" class="more-toggle">
+	    <input type="radio" name="row5-more" id="row5-whoscooking" class="more-toggle">
 	    <div class="project-more project-more-whoscooking small">
 	      <div class="project-more-head">
 	        <div class="half">whoscooking.live</div>
-	        <label for="row4-none" class="link close-link">close</label>
+	        <label for="row5-none" class="link close-link">close</label>
 	      </div>
 	      <p>live leaderboard that tracks GitHub push stats through a GitHub App.</p>
 	      <p>super easy to install github app starts automatically tracking every time you push, also a surprisingly difficult infrastructure challenge I had a ton of fun building</p>
@@ -539,11 +560,6 @@
 		    <p>visit <a class="link" href="https://whoscooking.live">whoscooking.live</a></p>
 	    </div>
 	  </div>
-	</div>
-	<input type="radio" name="row4-more" id="row4-none" class="more-toggle" checked>
-	</div>
-    <div class="project-wrap">
-    <div class="project-row">
 	  <div class="project-item">
 	    <div class="project">
 	      <img class="project-image" alt="Procedural Art and Worlds" src="https://ryanhub.org/images/procedural-art.png">
@@ -577,26 +593,26 @@
 		    <p>code <a class="link" href="https://github.com/RyanA005/calorie-app">here</a> app store listing <a class="link" href="https://apps.apple.com/us/app/nobs-calorie-tracker/id6742431326">here</a></p>
 	    </div>
 	  </div>
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" alt="cherry-blossom-app" src="https://ryanhub.org/images/cherry-blossom-app.png">
-		  <div class="half"><strong>cherry-blossom-app</strong> GDG mobile workshop app <label for="row5-cherry-blossom" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row5-more" id="row5-cherry-blossom" class="more-toggle">
-	    <div class="project-more project-more-cherry-blossom small">
-	      <div class="project-more-head">
-	        <div class="half">cherry-blossom-app</div>
-	        <label for="row5-none" class="link close-link">close</label>
-	      </div>
-	      <p>starter app for a GDG x Engineers Without Borders mobile development workshop. React Native + Expo with tab navigation, Firebase, and tree survey map built on top of real data in Newark NJ's Branch Brook Park.</p>
-		    <p>repo <a class="link" href="https://github.com/RyanA005/cherry-blossom-app">on github</a></p>
-	    </div>
-	  </div>
 	</div>
 	<input type="radio" name="row5-more" id="row5-none" class="more-toggle" checked>
 	</div>
     <div class="project-wrap">
     <div class="project-row">
+	  <div class="project-item">
+	    <div class="project">
+	      <img class="project-image" alt="cherry-blossom-app" src="https://ryanhub.org/images/cherry-blossom-app.png">
+		  <div class="half"><strong>cherry-blossom-app</strong> GDG mobile workshop app <label for="row6-cherry-blossom" class="link more-link">more</label></div>
+	    </div>
+	    <input type="radio" name="row6-more" id="row6-cherry-blossom" class="more-toggle">
+	    <div class="project-more project-more-cherry-blossom small">
+	      <div class="project-more-head">
+	        <div class="half">cherry-blossom-app</div>
+	        <label for="row6-none" class="link close-link">close</label>
+	      </div>
+	      <p>starter app for a GDG x Engineers Without Borders mobile development workshop. React Native + Expo with tab navigation, Firebase, and tree survey map built on top of real data in Newark NJ's Branch Brook Park.</p>
+		    <p>repo <a class="link" href="https://github.com/RyanA005/cherry-blossom-app">on github</a></p>
+	    </div>
+	  </div>
 	  <div class="project-item">
 	    <div class="project">
 	      <img class="project-image" alt="game-starter" src="https://ryanhub.org/images/game-starter.png">
@@ -627,16 +643,21 @@
 		    <p>repo <a class="link" href="https://github.com/RyanA005/react-native-template">on github</a></p>
 	    </div>
 	  </div>
+	</div>
+	<input type="radio" name="row6-more" id="row6-none" class="more-toggle" checked>
+	</div>
+    <div class="project-wrap">
+    <div class="project-row">
 	  <div class="project-item">
 	    <div class="project">
 	      <img class="project-image" alt="api-frame" src="https://ryanhub.org/images/api-frame.png">
-	      <div class="half"><strong>api-frame</strong> REST API starter for backends <label for="row6-api-frame" class="link more-link">more</label></div>
+	      <div class="half"><strong>api-frame</strong> REST API starter for backends <label for="row7-api-frame" class="link more-link">more</label></div>
 	    </div>
-	    <input type="radio" name="row6-more" id="row6-api-frame" class="more-toggle">
+	    <input type="radio" name="row7-more" id="row7-api-frame" class="more-toggle">
 	    <div class="project-more project-more-api-frame small">
 	      <div class="project-more-head">
 	        <div class="half">api-frame</div>
-	        <label for="row6-none" class="link close-link">close</label>
+	        <label for="row7-none" class="link close-link">close</label>
 	      </div>
 	      <p>reusable REST API starter I built for my friends at <a class="link" href="https://decksense.app">decksense.app</a></p>
 	      <p>includes a db connection, tokens, admin auth, health, and some other utilities to keep things running super smooth and simple</p>
@@ -644,7 +665,7 @@
 	    </div>
 	  </div>
 	</div>
-	<input type="radio" name="row6-more" id="row6-none" class="more-toggle" checked>
+	<input type="radio" name="row7-more" id="row7-none" class="more-toggle" checked>
 	</div>
   </div><hr class="divider">
 
