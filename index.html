@@ -1,681 +1,303 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ryan Alport's profile on RyanHub.">
+  <meta name="description" content="Ryan Alport's page on RyanHub.">
   <title>Ryan Alport</title>
   <style>
-
-  body {
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-    border: 1px solid #333;
-    padding: 10px;
-  }
-  .small {
-    font-size: 1.0rem;
-  }
-  .half {
-    font-size: 1.25rem;
-    overflow-wrap: break-word;
-    word-break: break-word;
-  }
-  .medium {
-    font-size: 1.5rem;
-  }
-  .large {
-    font-size: 2.0rem;
-    word-break: normal !important;
-  }
-  .link {
-    color: blue;
-  }
-  .header {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-self: center;
-    max-width: 45rem;
-    width: 90%;
-    margin: 20px auto;
-  }
-  .title {
-    max-width: 60%;
-    word-break: break-word;
-    flex-shrink: 1;
-    flex-grow: 1;
-    min-width: 0;
-  }
-  .nav {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  @media (max-width: 26rem) {
-    .nav {
-      flex-direction: column;
-      gap: 0.5rem;
+    :root {
+      --bg: #fff;
+      --text: #1a1a1a;
+      --muted: #555;
+      --rule: #ccc;
+      --link: #0000ee;
+      --max: 42rem;
     }
-    .title {
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem 1.25rem 3rem;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+
+    .page {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .site-header {
       display: flex;
-      flex-direction: column;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0;
     }
-  }
-  .divider {
-	width: 100%; 
-	margin: 20px auto 20px auto; 
-	display: block;
-  }
-  .bio {
-    text-align: left;
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .section-title {
-    display: flex;
-    flex-direction: column;
-    max-width: 45rem;
-    width: 90%;
-    margin: 40px auto 20px auto;
-  }
-  .section-row,
-  .section-column {
-    display: flex;
-    gap: 1.75rem;
-    max-width: 45rem;
-    width: 90%;
-    margin: 40px auto;
-  }
-  .section-row {
-    flex-direction: row;
-    align-items: center;
-  }
-  .section-column {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .bio-side {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 0 0 min(42vw, 16rem);
-    max-width: 16rem;
-  }
-  .bio-image,
-  .project-image {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  .project {
-	display: flex;
-	flex: 1;
-	flex-direction: column;
-    gap: 10px;
-  }
-  .project-row {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-	width: 100%;
-	gap: 40px;
-    max-width: 45rem;
-    position: relative;
-  }
-  .project-item {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    overflow: visible;
-  }
-  .project-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    max-width: 45rem;
-    margin: 0 auto 2rem auto;
-  }
-  .more-toggle {
-    display: none;
-  }
-  .more-link {
-    cursor: pointer;
-    display: block;
-    margin-top: 0.35rem;
-    width: fit-content;
-  }
-  .project-more {
-    display: none;
-    width: 100%;
-    text-align: left;
-    margin-top: 1rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid #ccc;
-    overflow: visible;
-  }
-  .project-more-head {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  .close-link {
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-  #row1-neural-physics:checked ~ .project-more-neural-physics,
-  #row1-game:checked ~ .project-more-game,
-  #row1-assistant:checked ~ .project-more-assistant,
-  #row2-ezcaptain:checked ~ .project-more-ezcaptain,
-  #row2-y86:checked ~ .project-more-y86,
-  #row2-baby-lm:checked ~ .project-more-baby-lm,
-  #row3-ryanhub:checked ~ .project-more-ryanhub,
-  #row3-couch-coop:checked ~ .project-more-couch-coop,
-  #row3-ai-agent-test:checked ~ .project-more-ai-agent-test,
-  #row4-baby-image-gen:checked ~ .project-more-baby-image-gen,
-  #row4-governors-mansion:checked ~ .project-more-governors-mansion,
-  #row4-iheartcomputer:checked ~ .project-more-iheartcomputer,
-  #row5-whoscooking:checked ~ .project-more-whoscooking,
-  #row5-art-and-worlds:checked ~ .project-more-art-and-worlds,
-  #row5-calorie-app:checked ~ .project-more-calorie-app,
-  #row6-cherry-blossom:checked ~ .project-more-cherry-blossom,
-  #row6-game-starter:checked ~ .project-more-game-starter,
-  #row6-react-native-template:checked ~ .project-more-react-native-template,
-  #row7-api-frame:checked ~ .project-more-api-frame {
-    display: block;
-  }
-  @media (min-width: 50rem) {
-    .project-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto auto;
-      align-items: start;
-    }
-    .project-item {
-      display: contents;
-    }
-    .project-item:nth-child(1) > .project { grid-column: 1; grid-row: 1; }
-    .project-item:nth-child(2) > .project { grid-column: 2; grid-row: 1; }
-    .project-item:nth-child(3) > .project { grid-column: 3; grid-row: 1; }
-    .project-item > .project-more {
-      grid-column: 1 / -1;
-      grid-row: 2;
-      margin-top: 0;
-      padding-top: 1rem;
-    }
-  }
-  @media (max-width: 50rem) {
-    .section-row {
-      flex-direction: column;
-    }
-    .project-row {
-      flex-direction: column;
-    }
-    .project-item {
-      width: 100%;
-    }
-    .bio-side {
-      flex: 0 0 auto;
-      width: min(75vw, 18rem);
-      max-width: 18rem;
-    }
-  }
 
+    .site-header .large,
+    .site-header .medium {
+      margin: 0;
+    }
+
+    .overflow {
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    .site-header + hr {
+      margin-top: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: normal;
+      margin: 0 0 1rem;
+    }
+
+    .photos,
+    .looks {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.65rem;
+    }
+
+    .photos {
+      margin: 0 0 1.25rem;
+    }
+
+    .photos img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .looks {
+      margin: 0.85rem 0 0.65rem;
+    }
+
+    .looks a {
+      display: block;
+      line-height: 0;
+    }
+
+    .looks a:hover img {
+      opacity: 0.85;
+    }
+
+    .looks img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .more {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .intro {
+      margin: 0 0 0.75rem;
+    }
+
+    .links {
+      margin: 0;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: underline;
+      text-underline-offset: 0.12em;
+    }
+
+    a:hover {
+      color: #0000aa;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 1.75rem 0;
+    }
+
+    .small {
+      font-size: 1rem;
+    }
+
+    .half {
+      font-size: 1.25rem;
+    }
+
+    .medium {
+      font-size: 1.5rem;
+      margin: 0 0 0.85rem;
+    }
+
+    .large {
+      font-size: 2rem;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      margin: 0 0 0.45rem;
+    }
+
+    .footer {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .footer .medium {
+      color: var(--text);
+    }
+
+    .footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 30rem) {
+      body {
+        padding: 1.5rem 1rem 2.5rem;
+        font-size: 1rem;
+      }
+
+      .site-header .large {
+        font-size: 1.5rem;
+      }
+
+      .site-header .medium {
+        font-size: 1.25rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .photos,
+      .looks {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="main">
+  <div class="page">
 
-  <header class="header">
-		<div class="title">
-			<strong class="large">Ryanhub</strong>
-			<span class="medium overflow">- Ryans page</span>
-		</div>
-		<nav class="nav">
-			<a class="link" href="https://ryanhub.org">home</a>
-		</nav>
-	</header>
-
-  <hr class="divider">
-
-  <div class="content">
-    <div class="section-row">
-
-      <div class="bio-side">
-        <img class="bio-image" alt="Ryan Alport" src="https://ryanhub.org/images/ryan.png">
+    <header class="site-header">
+      <div class="title">
+        <strong class="large">Ryanhub</strong>
+        <span class="medium overflow">- Ryans page</span>
       </div>
+      <nav>
+        <a href="https://ryanhub.org">home</a>
+      </nav>
+    </header>
+    <hr>
 
-      <div class="bio">
-		<p class="medium" style="margin: 0;">I'm Ryan. I'm a computer science student and I like building cool things from scratch.</p>
-		<p class="small">
-        I have experience with AI, systems, graphics, networks, web, startups and more.
-		<br>
-		I built this site and everything listed below. enjoy.</p>
-        <div class="bio-links">
-          <a class="link" href="https://github.com/RyanA005">github</a> ·
-          <a class="link" href="https://www.youtube.com/@ralport">youtube</a> ·
-          <a class="link" href="https://www.linkedin.com/in/ryanalport/">linkedin</a> ·
-          <a class="link" href="https://x.com/ryanalport">x</a> ·
-          <a class="link" href="https://www.instagram.com/ryan_alport/">instagram</a>
-        </div>
+    <h1 class="medium">hello, welcome to my personal site!</h1>
+
+    <div class="photos" aria-label="personal photos">
+      <img src="https://ryanhub.org/images/food.jpg" alt="">
+      <img src="https://ryanhub.org/images/ski.jpg" alt="">
+      <img src="https://ryanhub.org/images/young-ryan.jpg" alt="">
+      <img src="https://ryanhub.org/images/books.jpg" alt="">
+    </div>
+
+    <p class="intro">I love to cook, I am an avid skier, I try to learn from and be around people I admire, and I enjoy computer programming the rest of my time.</p>
+    <p class="links">
+      <a href="https://github.com/RyanA005">github</a> ·
+      <a href="https://www.youtube.com/@ralport">youtube</a> ·
+      <a href="https://www.linkedin.com/in/ryanalport/">linkedin</a> ·
+      <a href="https://x.com/ryanalport">x</a> ·
+      <a href="https://www.instagram.com/ryan_alport/">instagram</a>
+    </p>
+
+    <hr>
+
+    <section>
+      <div class="medium">currently working on</div>
+      <ul>
+        <li>building <a href="https://ezcaptain.com">ezcaptain</a></li>
+        <li>running <a href="https://iheartcomputer.club">iheartcomputer</a></li>
+        <li>studying computer science at <a href="https://www.njit.edu/">njit</a></li>
+        <li>learning about computer hardware</li>
+        <li>training small AI models</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section>
+      <div class="medium">selected projects</div>
+      <ul class="made">
+        <li><a href="https://ryanhub.org/blogs/neural-physics.html">neural physics engine</a> - replacing voxel physics with a tiny neural network</li>
+        <li><a href="https://iheartcomputer.club/projects/baby-lm">baby lm</a> - language model trained on dr. seuss written completely from scratch in C</li>
+        <li><a href="https://github.com/RyanA005/y86-64">y86-64 ide</a> - program for assembling and running the hypothetical y86 assembly language</li>
+        <li><a href="https://whoscooking.live">whos cooking</a> - daily github push leaderboard so my friends and I can compete daily</li>
+        <li><a href="https://github.com/RyanA005/simple-game">simple-game</a> - p2p networked raycaster game using c++ and opengl</li>
+        <li><a href="https://github.com/RyanA005/couch-coop-engine">game engine</a> - multiplayer game engine connecting phones as controllers by websocket</li>
+        <li><a href="https://pictureof.horse">pictureof.horse</a> - greatest acheivement</li>
+        <li><a href="https://github.com/RyanA005">more -></a></li>
+      </ul>
+
+      <div class="looks" aria-label="project pictures">
+        <a href="https://iheartcomputer.club/projects/art-and-worlds/">
+          <img src="https://ryanhub.org/images/flow-art.jpg">
+        </a>
+        <a href="https://github.com/RyanA005/couch-coop-engine">
+          <img src="https://ryanhub.org/images/game-engine.jpg">
+        </a>
+        <a href="https://iheartcomputer.club/projects/baby-image-gen/">
+          <img src="https://ryanhub.org/images/chad-lm.jpg">
+        </a>
+        <a href="https://github.com/RyanA005/y86-64">
+          <img src="https://ryanhub.org/images/y86-ide.jpg">
+        </a>
       </div>
+    </section>
 
-    </div>
+    <hr>
+
+    <section>
+      <div class="medium">other links</div>
+      <ul class="elsewhere">
+        <li><a href="https://iheartcomputer.club/about/#ryan-alport">iheartcomputer</a></li>
+        <li><a href="https://www.gildenkrieg.space/">gildenkrieg</a></li>
+        <li><a href="https://ryanhub.org/blog/">blog</a></li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <footer class="footer">
+      <div class="medium">About this site</div>
+      <p>
+        this page is part of <a href="https://ryanhub.org">ryanhub.org</a>.
+        the site was written by hand and serves as my self hosted git manager, personal site, dev tools host, and home for a number of internet experiments.
+        read more <a href="https://ryanhub.org/about">here</a>.
+        if you like anything or want to know more,
+        <a href="mailto:ralport2005@gmail.com">send me an email</a>, I love getting emails!
+      </p>
+    </footer>
+
   </div>
-
-  <hr class="divider">
-
-  <div style="margin: 20px auto; flex-direction: column;">
-	<div class="section-title">
-	  <div class="large">selected work</div>
-	  <div class="small">a few of my favorites in no particular order</div>
-	</div>
-    <div class="project-wrap">
-    <div class="project-row">
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" src="https://ryanhub.org/images/neural-physics-blog.png">
-		  <div class="half"><strong>neural physics engine</strong> cool project and blog post <label for="row1-neural-physics" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row1-more" id="row1-neural-physics" class="more-toggle">
-	    <div class="project-more project-more-neural-physics small">
-	      <div class="project-more-head">
-	        <div class="half">Neural physics engine</div>
-	        <label for="row1-none" class="link close-link">close</label>
-	      </div>
-	      <p>Implementation and writeup for a small neural network to replace a typical voxel physics engine</p>
-	      <p>find the post <a class="link" href="https://ryanhub.org/blogs/neural-physics.html">here</a></p>
-	    </div>
-	  </div>
-	  <div class="project-item">
-	    <div class="project">
-		  <img class="project-image" src="https://ryanhub.org/images/game.png">
-		  <div class="half"><strong>simple-game</strong> my first game <label for="row1-game" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row1-more" id="row1-game" class="more-toggle">
-	    <div class="project-more project-more-game small">
-	      <div class="project-more-head">
-	        <div class="half">simple-game</div>
-	        <label for="row1-none" class="link close-link">close</label>
-	      </div>
-	      <p>p2p networked raycaster game written from scratch in C++</p>
-	      <p>this was among my first real software projects, it got me reading the OpenGL book, Unix Network Programming, and gave me a first look at how computers run instructions.</p>
-		    <p>find the repo here: <a class="link" href="https://github.com/RyanA005/simple-game">github</a> or <a class="link" href="https://ryanhub.org/repos/simple-game">ryanhub</a></p>
-	    </div>
-	  </div>
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" src="https://ryanhub.org/images/assistant.png">
-		  <div class="half"><strong>local assistant</strong> personal self hosted ai agent <label for="row1-assistant" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row1-more" id="row1-assistant" class="more-toggle">
-	    <div class="project-more project-more-assistant small">
-	      <div class="project-more-head">
-	        <div class="half">assistant agent</div>
-	        <label for="row1-none" class="link close-link">close</label>
-	      </div>
-	      <p>AI agent developed fully from scratch in Go.</p>
-	      <p>the agent has access to custom tools and scheduled automations tailored specifically to my daily workflows but it can be easily extended</p>
-		    <p><a class="link" href="https://iheartcomputer.club/projects/ai-agents">read</a> / <a class="link" href="https://www.youtube.com/watch?v=2CpSjoNCKxo">watch</a> the computer club presentation or read the public fork of the code <a class="link" href="https://ryanhub.org/repos/assistant.git">here</a>.</p>
-	    </div>
-	  </div>
-	</div>
-	<input type="radio" name="row1-more" id="row1-none" class="more-toggle" checked>
-	</div>
-	<div class="project-wrap">
-    <div class="project-row">
-	  <div class="project-item">
-	    <div class="project">
-		  <img class="project-image" src="https://ryanhub.org/images/ezcaptain.png">
-		  <div class="half"><strong>ezcaptain.com</strong> SaaS for USCG compliant schools <label for="row2-ezcaptain" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row2-more" id="row2-ezcaptain" class="more-toggle">
-	    <div class="project-more project-more-ezcaptain small">
-	      <div class="project-more-head">
-	        <div class="half">ezcaptain.com</div>
-	        <label for="row2-none" class="link close-link">close</label>
-	      </div>
-	      <p>all in one system for maritime training providers to handle documents, scheduling, enrollments, payments, and more.</p>
-	      <p>building and scaling this currently...</p>
-		    <p>go book a call with me <a class="link" href="https://ezcaptain.com">here</a></p>
-	    </div>
-	  </div>
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" src="https://ryanhub.org/images/y86.png">
-		  <div class="half"><strong>y86/64-IDE</strong> support for y86/64 assembly language <label for="row2-y86" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row2-more" id="row2-y86" class="more-toggle">
-	    <div class="project-more project-more-y86 small">
-	      <div class="project-more-head">
-	        <div class="half">y86/64-IDE</div>
-	        <label for="row2-none" class="link close-link">close</label>
-	      </div>
-	      <p>Y86-64 IDE written totally from scratch in C.</p>
-	      <p>I initially wrote this to study for NJIT's CS350 but its turned into a favorite little pet project. Zero AI has touched or inspired this code, for better or for worse...</p>
-	      <p>I one day plan to buy an FPGA and implement Y86 in hardware but I have a whole life to live before I start doing that</p>
-		    <p>see the repo <a class="link" href="https://github.com/RyanA005/y86-64">here</a></p>
-	    </div>
-	  </div>
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" src="https://ryanhub.org/images/baby-lm.png">
-		  <div class="half"><strong>baby-lm</strong> language model written from scratch trained on only Dr. Seuss <label for="row2-baby-lm" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row2-more" id="row2-baby-lm" class="more-toggle">
-	    <div class="project-more project-more-baby-lm small">
-	      <div class="project-more-head">
-	        <div class="half">baby-lm</div>
-	        <label for="row2-none" class="link close-link">close</label>
-	      </div>
-	      <p>tiny language model written in C with no libraries or dependencies.</p>
-	      <p>I built this for the inaugural computer club meeting and I still think it was one of our best. The intent was to show that LLMs operated with simple principles just scaled unreasonably much.</p>
-		    <p>the response to this presentation was so good it set off a mini series I've been calling <i>baby AI</i> where I build and train simple models on funny datasets to demonstrate how it works in the big ones.</p>
-		    <p>find the presentation <a class="link" href="https://iheartcomputer.club/projects/baby-lm">here</a>, links to the code are at the end</p>
-	    </div>
-	  </div>
-	</div>
-	<input type="radio" name="row2-more" id="row2-none" class="more-toggle" checked>
-	</div>
-  </div><hr class="divider">
-
-  <div style="margin: 20px auto; flex-direction: column;">
-	<div class="section-title">
-	  <div class="large">extra links</div>
-	  <div class="small">some other places you'll find me</div>
-	</div>
-    <div class="section-column" style="margin-top: 20px;">
-	  <div class="extra-link">
-	    <div class="half"><strong><a class="link" href="https://iheartcomputer.club/about/#ryan-alport">iheartcomputer</a></strong> - my very own computer club</div>
-	    <div class="small">you can read / watch all my presentations from the site and join the discord for more :)</div>
-	  </div>
-	  <div class="extra-link">
-	    <div class="half"><strong><a class="link" href="https://whoscooking.live/u/70728940">whoscooking</a></strong> - public git leaderboard I built</div>
-	    <div class="small">this website tracks your push stats using a github app. My friends and I go to war daily to push more code</div>
-	  </div>
-	  <div class="extra-link">
-	    <div class="half"><strong><a class="link" href="https://sites.google.com/view/cnalab/team/students#h.1hackt5fr4vk">CNAlab</a></strong> - Clinical Neuromuscular Adaptation Lab at NJIT</div>
-	    <div class="small">I work here using AI agents to validate AI agents who create synthetic human motion data</div>
-	  </div>
-	  <div class="extra-link">
-	    <div class="half"><strong><a class="link" href="https://www.gildenkrieg.space/">Gildenkrieg</a></strong> - massive online space simulation game</div>
-		<div class="small">my friends are building this super ambitious open world space game and I handle the entrypoint / load balancing</div>
-	  </div>
-	  <div class="extra-link">
-	    <div class="half"><strong><a class="link" href="https://ryanhub.org/blog/">Blog</a></strong> - my personal blog</div>
-			<div class="small">I very very very occasionally write something worth posting here but dont expect too much</div>
-	  </div>
-	  <div class="extra-link">
-	    <div class="half"><strong><a class="link" href="https://pictureof.horse">picture of horse</a></strong> - my proudest 30$ a year spent</div>
-		<div class="small">just go visit the site and you will understand why I think of this as my finest work</div>
-	  </div>
-	</div>
-
-  </div><hr class="divider">
-
-  <div style="margin: 20px auto; flex-direction: column;">
-	<div class="section-title" style="margin-top: 20px;">
-	  <div class="large">more projects</div>
-	  <div class="small">in no particular order</div>
-	</div>
-    <div class="project-wrap">
-    <div class="project-row">
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" alt="ryanhub" src="https://ryanhub.org/images/ryanhub.png">
-		  <div class="half"><strong>ryanhub</strong> evidence of my UI mastery <label for="row3-ryanhub" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row3-more" id="row3-ryanhub" class="more-toggle">
-	    <div class="project-more project-more-ryanhub small">
-	      <div class="project-more-head">
-	        <div class="half">ryanhub</div>
-	        <label for="row3-none" class="link close-link">close</label>
-	      </div>
-	      <p>self hosted remote git storage and manager, personal site, home for web experiments, and more. I built this project as a way to learn PHP but ended up learning much more about sys admin, git, http, and the web in general.</p>
-	      <p>I use ryanhub daily for both git and all the other random dev things I host on it. more info <a class="link" href="https://ryanhub.org/about">here</a></p>
-	    </div>
-	  </div>
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" alt="couch-coop-engine" src="https://ryanhub.org/images/couch-coop.png">
-		  <div class="half"><strong>couch-coop-engine</strong> unique multiplayer game engine <label for="row3-couch-coop" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row3-more" id="row3-couch-coop" class="more-toggle">
-	    <div class="project-more project-more-couch-coop small">
-	      <div class="project-more-head">
-	        <div class="half">couch-coop-engine</div>
-	        <label for="row3-none" class="link close-link">close</label>
-	      </div>
-	      <p>framework for couch co-op games written from scratch in C. one machine runs the server, renders, and does game logic while phones connect in a browser to be used as controllers, I want to implement wii and xbox style party games in this engine someday</p>
-	      <p>simple rendering and physics implementations for now, but networking is fully functional. A game engine could take a lifetime so this project is on hold for the moment but I would love to jump back in soon</p>
-		    <p>see the repo <a class="link" href="https://github.com/RyanA005/couch-coop-engine">on github</a></p>
-	    </div>
-	  </div>
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" alt="ai-agent-test" src="https://ryanhub.org/images/ai-agents.png">
-		  <div class="half"><strong>ai-agent-test</strong> sandbox experiments with local models <label for="row3-ai-agent-test" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row3-more" id="row3-ai-agent-test" class="more-toggle">
-	    <div class="project-more project-more-ai-agent-test small">
-	      <div class="project-more-head">
-	        <div class="half">ai-agent-test</div>
-	        <label for="row3-none" class="link close-link">close</label>
-	      </div>
-	      <p>sandboxed experiments for iterating on custom lightweight AI agents.</p>
-	      <p>super simple harnesses running local models (usually using qwen3.5s in these tests) so I can experiment and optimize fast and free</p>
-		    <p>multiple experiments live in this repo on <a class="link" href="https://ryanhub.org/repos/ai-agent-test">ryanhub</a></p>
-	    </div>
-	  </div>
-	</div>
-	<input type="radio" name="row3-more" id="row3-none" class="more-toggle" checked>
-	</div>
-    <div class="project-wrap">
-    <div class="project-row">
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" alt="baby-image-gen" src="https://ryanhub.org/images/baby-image-gen.png">
-		  <div class="half"><strong>baby-image-gen</strong> tiny image generation model written in C <label for="row4-baby-image-gen" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row4-more" id="row4-baby-image-gen" class="more-toggle">
-	    <div class="project-more project-more-baby-image-gen small">
-	      <div class="project-more-head">
-	        <div class="half">baby-image-gen</div>
-	        <label for="row4-none" class="link close-link">close</label>
-	      </div>
-	      <p>simple autoencoder implementation for image generation, written from scratch in C, no libraries</p>
-	      <p>part of my <i>baby AI</i> series and one of the only times I have ever had to pull out a pencil and paper to do the math for one of these...</p>
-	      <p>the training dataset is ~100 emojis and our generation goal is to create freaky new ones</p>
-		  <p><a class="link" href="https://iheartcomputer.club/projects/baby-image-gen/">read</a> the presentation or find the code on <a class="link" href="https://ryanhub.org/repos/baby-image-gen">ryanhub</a></p>
-	    </div>
-	  </div>
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" alt="governors-mansion" src="https://ryanhub.org/images/governors-mansion.png">
-		  <div class="half"><strong>governors-mansion</strong> CTF challenge for NJIT Cybersecurity Club <label for="row4-governors-mansion" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row4-more" id="row4-governors-mansion" class="more-toggle">
-	    <div class="project-more project-more-governors-mansion small">
-	      <div class="project-more-head">
-	        <div class="half">governors-mansion</div>
-	        <label for="row4-none" class="link close-link">close</label>
-	      </div>
-	      <p>CTF challenge for the 2025 Spooky CTF hosted by the NJIT Information & Cybersecurity Club.</p>
-	      <p>a tiny text based game with a hidden debug mode and weird format string vulnerability</p>
-		    <p>full writeup in the <a class="link" href="https://github.com/RyanA005/governors-mansion">repo readme</a>, very interesting examination of the printf function</p>
-	    </div>
-	  </div>
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" alt="iheartcomputer.club" src="https://ryanhub.org/images/iheartcomputer.png">
-		  <div class="half"><strong>iheartcomputer.club</strong> club website and admin backend <label for="row4-iheartcomputer" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row4-more" id="row4-iheartcomputer" class="more-toggle">
-	    <div class="project-more project-more-iheartcomputer small">
-	      <div class="project-more-head">
-	        <div class="half">iheartcomputer.club</div>
-	        <label for="row4-none" class="link close-link">close</label>
-	      </div>
-	      <p>public website for iheartcomputer, my unofficial computer club at NJIT</p>
-	      <p>you can find all of our presentations and resources here, club admins can manage from the backend</p>
-		    <p>see the site <a class="link" href="https://iheartcomputer.club">here</a> or the public parts of the source <a class="link" href="https://github.com/RyanA005/iheartcomputer">on github</a></p>
-	    </div>
-	  </div>
-	</div>
-	<input type="radio" name="row4-more" id="row4-none" class="more-toggle" checked>
-	</div>
-    <div class="project-wrap">
-    <div class="project-row">
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" alt="whoscooking.live" src="https://ryanhub.org/images/whoscooking.png">
-		  <div class="half"><strong>whoscooking.live</strong> public git push leaderboard <label for="row5-whoscooking" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row5-more" id="row5-whoscooking" class="more-toggle">
-	    <div class="project-more project-more-whoscooking small">
-	      <div class="project-more-head">
-	        <div class="half">whoscooking.live</div>
-	        <label for="row5-none" class="link close-link">close</label>
-	      </div>
-	      <p>live leaderboard that tracks GitHub push stats through a GitHub App.</p>
-	      <p>super easy to install github app starts automatically tracking every time you push, also a surprisingly difficult infrastructure challenge I had a ton of fun building</p>
-	      <p>my friends and I run challenges constantly to see whos really making things happen</p>
-		    <p>visit <a class="link" href="https://whoscooking.live">whoscooking.live</a></p>
-	    </div>
-	  </div>
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" alt="Procedural Art and Worlds" src="https://ryanhub.org/images/procedural-art.png">
-		  <div class="half"><strong>Procedural Art and Worlds</strong> club presentation <label for="row5-art-and-worlds" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row5-more" id="row5-art-and-worlds" class="more-toggle">
-	    <div class="project-more project-more-art-and-worlds small">
-	      <div class="project-more-head">
-	        <div class="half">Procedural Art and Worlds</div>
-	        <label for="row5-none" class="link close-link">close</label>
-	      </div>
-	      <p>computer club presentation on procedural generation with five interactive JavaScript demos</p>
-	      <p>super visually interesting presentation that inspired some cool spinoffs from my friends</p>
-	      <p>we demo noise, cellular automata, markov chains, and wave function collapse</p>
-		  <p><a class="link" href="https://iheartcomputer.club/projects/art-and-worlds/">read</a> / <a class="link" href="https://www.youtube.com/watch?v=ZUc5TgcAGMs">watch</a></p>
-	    </div>
-	  </div>
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" alt="NoBS Calorie Tracker" src="https://ryanhub.org/images/nobs.png">
-		  <div class="half"><strong>NoBS Calorie Tracker</strong> iOS app built from scratch <label for="row5-calorie-app" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row5-more" id="row5-calorie-app" class="more-toggle">
-	    <div class="project-more project-more-calorie-app small">
-	      <div class="project-more-head">
-	        <div class="half">NoBS Calorie Tracker</div>
-	        <label for="row5-none" class="link close-link">close</label>
-	      </div>
-	      <p>mobile calorie tracker built with React Native and Expo. Custom Flask API, custom graph library, Google Firebase backend, and a clean UI.</p>
-	      <p>this was one of my first big projects and the first I ever made public, the app is still up and running with about 10 active users (shoutout to you!)</p>
-		    <p>code <a class="link" href="https://github.com/RyanA005/calorie-app">here</a> app store listing <a class="link" href="https://apps.apple.com/us/app/nobs-calorie-tracker/id6742431326">here</a></p>
-	    </div>
-	  </div>
-	</div>
-	<input type="radio" name="row5-more" id="row5-none" class="more-toggle" checked>
-	</div>
-    <div class="project-wrap">
-    <div class="project-row">
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" alt="cherry-blossom-app" src="https://ryanhub.org/images/cherry-blossom-app.png">
-		  <div class="half"><strong>cherry-blossom-app</strong> GDG mobile workshop app <label for="row6-cherry-blossom" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row6-more" id="row6-cherry-blossom" class="more-toggle">
-	    <div class="project-more project-more-cherry-blossom small">
-	      <div class="project-more-head">
-	        <div class="half">cherry-blossom-app</div>
-	        <label for="row6-none" class="link close-link">close</label>
-	      </div>
-	      <p>starter app for a GDG x Engineers Without Borders mobile development workshop. React Native + Expo with tab navigation, Firebase, and tree survey map built on top of real data in Newark NJ's Branch Brook Park.</p>
-		    <p>repo <a class="link" href="https://github.com/RyanA005/cherry-blossom-app">on github</a></p>
-	    </div>
-	  </div>
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" alt="game-starter" src="https://ryanhub.org/images/game-starter.png">
-		  <div class="half"><strong>game-starter</strong> OpenGL setup code <label for="row6-game-starter" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row6-more" id="row6-game-starter" class="more-toggle">
-	    <div class="project-more project-more-game-starter small">
-	      <div class="project-more-head">
-	        <div class="half">game-starter</div>
-	        <label for="row6-none" class="link close-link">close</label>
-	      </div>
-        <p>minimal C and cmake for loading OpenGL and compiling hello triangle</p>
-		    <p>repo <a class="link" href="https://github.com/RyanA005/game-starter">on github</a></p>
-	    </div>
-	  </div>
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" alt="react-native-template" src="https://ryanhub.org/images/react-native-template.png">
-		  <div class="half"><strong>react-native-template</strong> my go to documented mobile starter <label for="row6-react-native-template" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row6-more" id="row6-react-native-template" class="more-toggle">
-	    <div class="project-more project-more-react-native-template small">
-	      <div class="project-more-head">
-	        <div class="half">react-native-template</div>
-	        <label for="row6-none" class="link close-link">close</label>
-	      </div>
-	      <p>minimal react native project with routing, Firebase, and other utilities I reach for on most of my mobile apps</p>
-		    <p>repo <a class="link" href="https://github.com/RyanA005/react-native-template">on github</a></p>
-	    </div>
-	  </div>
-	</div>
-	<input type="radio" name="row6-more" id="row6-none" class="more-toggle" checked>
-	</div>
-    <div class="project-wrap">
-    <div class="project-row">
-	  <div class="project-item">
-	    <div class="project">
-	      <img class="project-image" alt="api-frame" src="https://ryanhub.org/images/api-frame.png">
-	      <div class="half"><strong>api-frame</strong> REST API starter for backends <label for="row7-api-frame" class="link more-link">more</label></div>
-	    </div>
-	    <input type="radio" name="row7-more" id="row7-api-frame" class="more-toggle">
-	    <div class="project-more project-more-api-frame small">
-	      <div class="project-more-head">
-	        <div class="half">api-frame</div>
-	        <label for="row7-none" class="link close-link">close</label>
-	      </div>
-	      <p>reusable REST API starter I built for my friends at <a class="link" href="https://decksense.app">decksense.app</a></p>
-	      <p>includes a db connection, tokens, admin auth, health, and some other utilities to keep things running super smooth and simple</p>
-	      <p>code on <a class="link" href="https://ryanhub.org/repos/api-frame">ryanhub</a></p>
-	    </div>
-	  </div>
-	</div>
-	<input type="radio" name="row7-more" id="row7-none" class="more-toggle" checked>
-	</div>
-  </div><hr class="divider">
-
-  <div class="footer">
-    <div class="medium">About this site</div>
-    <div class="small" style="margin: 0; text-align: center;">
-      This page is part of the larger <a class="link" href="https://ryanhub.org">ryanhub.org</a>. The site was written by hand and serves as my self hosted git manager, personal site, dev tools host, and home for a number of internet experiments.
-	  I encourage you to explore and if you like anything or want to know more, <a href="mailto:ralport2005@gmail.com">send me an email</a>, I love getting emails!
-    </div>
-  </div>
-
 </body>
 </html>
