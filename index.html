@@ -9,7 +9,6 @@
     :root {
       --bg: #fff;
       --text: #1a1a1a;
-      --muted: #555;
       --rule: #ccc;
       --link: #0000ee;
       --max: 42rem;
@@ -91,10 +90,6 @@
       line-height: 0;
     }
 
-    .looks a:hover img {
-      opacity: 0.85;
-    }
-
     .looks img {
       width: 100%;
       aspect-ratio: 1;
@@ -161,16 +156,7 @@
     .footer {
       margin-top: 0.5rem;
       font-size: 0.95rem;
-      color: var(--muted);
       text-align: center;
-    }
-
-    .footer .medium {
-      color: var(--text);
-    }
-
-    .footer p {
-      margin: 0;
     }
 
     @media (max-width: 30rem) {
@@ -203,7 +189,7 @@
 
     <header class="site-header">
       <div class="title">
-        <strong class="large">Ryanhub</strong>
+        <strong class="large" style="font-family: none;">Ryanhub</strong>
         <span class="medium overflow">- Ryans page</span>
       </div>
       <nav>
